@@ -1,0 +1,57 @@
+# Byte-compiled / optimized
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+pip-wheel-metadata/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Media fixtures (large binaries should not be committed)
+*.mp4
+*.mkv
+*.webm
+*.mov
+*.avi
+*.mp3
+*.wav
+*.flac
+*.aiff
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+
+# Exceptions: docs assets
+!docs/**/*.png
+!docs/**/*.jpg
