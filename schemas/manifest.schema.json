@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gitstq/mediaprobe/blob/main/schemas/manifest.schema.json",
+  "title": "MediaProbe Manifest",
+  "description": "确定性媒体容器元数据清单",
+  "type": "object",
+  "required": [
+    "path",
+    "size_bytes",
+    "sha256",
+    "format"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "path": {
+      "type": "string"
+    },
+    "size_bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "format": {
+      "type": "string"
+    },
+    "mime": {
+      "type": "string"
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "width": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "height": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "bitrate_bps": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "sample_rate": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "channels": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "codec": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "streams": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "index",
+          "kind",
+          "codec",
+          "codec_tag"
+        ],
+        "properties": {
+          "index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "video",
+              "audio",
+              "subtitle",
+              "attachment",
+              "unknown"
+            ]
+          },
+          "codec": {
+            "type": "string"
+          },
+          "codec_tag": {
+            "type": "string"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          },
+          "sample_rate": {
+            "type": "integer"
+          },
+          "channels": {
+            "type": "integer"
+          },
+          "bit_depth": {
+            "type": "integer"
+          },
+          "language": {
+            "type": "string"
+          },
+          "duration_ms": {
+            "type": "integer"
+          },
+          "bitrate_bps": {
+            "type": "integer"
+          },
+          "extra": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "code",
+          "severity",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "error",
+              "warn",
+              "info"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "hint": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "container": {
+      "type": "object"
+    },
+    "tool": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "name": "mediaprobe",
+  "version": "1.0.0",
+  "description": "只读媒体容器元数据探查与审计；无网络、无外部依赖、不修改文件",
+  "transport": "cli",
+  "commands": [
+    {
+      "name": "inspect",
+      "description": "探查单个媒体文件并返回 JSON 清单",
+      "arguments": [
+        {
+          "name": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "--pretty",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "--no-hash",
+          "type": "boolean",
+          "default": false
+        }
+      ]
+    },
+    {
+      "name": "batch",
+      "description": "批量探查目录，输出 JSONL",
+      "arguments": [
+        {
+          "name": "directory",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "--pattern",
+          "type": "string",
+          "default": "*"
+        },
+        {
+          "name": "--recursive",
+          "type": "boolean",
+          "default": false
+        }
+      ]
+    },
+    {
+      "name": "audit",
+      "description": "按严重级别过滤审计发现",
+      "arguments": [
+        {
+          "name": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "--severity",
+          "type": "string",
+          "enum": [
+            "error",
+            "warn",
+            "info"
+          ],
+          "default": "warn"
+        }
+      ]
+    },
+    {
+      "name": "diff",
+      "description": "对比两个清单的字段差异",
+      "arguments": [
+        {
+          "name": "left",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "right",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "schema",
+      "description": "输出 Manifest JSON Schema",
+      "arguments": []
+    },
+    {
+      "name": "contract",
+      "description": "输出本工具契约",
+      "arguments": []
+    }
+  ],
+  "safety": {
+    "read_only": true,
+    "network_access": false,
+    "external_processes": false,
+    "max_file_size_bytes": null
+  }
+}
